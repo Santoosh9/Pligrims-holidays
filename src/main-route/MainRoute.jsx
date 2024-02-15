@@ -1,15 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from '../components/layout/Navbar';
+import Home from '../components/pages/Home';
 
 const MainRoute = () => {
   return (
-    < > 
-      <Navbar />
+    <>
+      <Home />
       <Router>
-        <Routes>
-          {/* <Route path="/" element={} /> */}
-        </Routes>
+        <Routes>{/* <Route path="/" element={} /> */}</Routes>
       </Router>
     </>
   );
