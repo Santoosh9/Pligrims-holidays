@@ -1,109 +1,132 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import logo from '../../assets/logo.png';
-import { CiLocationOn, CiMail } from 'react-icons/ci';
-import { MdOutlinePhoneEnabled } from 'react-icons/md';
-import { LuUserPlus } from 'react-icons/lu';
-import { useState } from 'react';
-import { BiChevronDown } from 'react-icons/bi';
+
 const Navbar = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [navIsShown, setnavIsShown] = useState(false);
+  const toggleNavIsShown = () => {
+    setnavIsShown((navIsShown) => !navIsShown);
+  };
   return (
-    <div className="flex flex-row  bg-slate-400 h-24  justify-between p-3 ">
-      <div className=" flex flex-wrap justify-start items-center ml-16">
-        <img
-          className="cursor-pointer overflow-hidden h-16 rounded-sm w-full "
-          src={logo}
-          alt="logo"
-        />
+    <nav className="flex justify-between items-center h-20 px-4 absolute top-0 left-0 z-10 w-full text-white bg-transparent">
+      <img
+        className="cursor-pointer overflow-hidden h-16 rounded-sm "
+        src={logo}
+        alt=""
+      />
+      <ul className="hidden md:flex">
+        <li>
+          <a href="">Home</a>
+        </li>
+        <li>
+          <a href="">About Us</a>
+        </li>
+        <li>
+          <a href="">Travel</a>
+        </li>
+        <li>
+          <a href="">Views</a>
+        </li>
+        <li>
+          <a href="">Contact</a>
+        </li>
+      </ul>
+      <div className="hidden md:flex">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+          />
+        </svg>
+
+        {/* <li className=" ">
+          <a href="">Login</a>
+        </li> */}
       </div>
-
-      <div className="flex flex-col flex-wrap flex-grow  justify-between items-end ">
-        <div className="flex flex-row  items-center">
-          <div className="flex flex-row justify-between items-center list-none">
-            <li className="flex items-center mr-4">
-              <span className="mr-2">
-                <MdOutlinePhoneEnabled className="text-red-700  text-lg" />
-              </span>
-              9805000098
-            </li>
-            <li className="flex items-center mr-4">
-              <span className="mr-2">
-                <CiMail className="text-red-700 text-lg" />
-              </span>
-              Pligrimsholidays@gmail.com
-            </li>
-            <li className="flex items-center mr-4">
-              <span className="mr-2">
-                <CiLocationOn className="text-red-700 text-lg" />
-              </span>
-              Jamal Kathmandu
-            </li>
+      {!navIsShown && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6 md:hidden"
+          onClick={toggleNavIsShown}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
+          />
+        </svg>
+      )}
+      {navIsShown && (
+        <div className="md:hidden absolute z-10 top-0 left-0 w-full bg-gray-100/90 text-black px-4 py-6">
+          <div className="flex justify-between">
+            <img
+              className="cursor-pointer overflow-hidden h-12 rounded-sm "
+              src={logo}
+              alt=""
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+              onClick={toggleNavIsShown}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </div>
-
-          <div className="flex flex-row items-center">
-            <span className="">
-              <LuUserPlus className="text-red-700 text-lg" />
-            </span>
-          </div>
+          <ul className=" mb-4">
+            <li className="border-b-2 border-b-gray-600">
+              <a href="">Home</a>
+            </li>
+            <li className="border-b-2 border-b-gray-600">
+              <a href="">About Us</a>
+            </li>
+            <li className="border-b-2 border-b-gray-600">
+              <a href="">Travel</a>
+            </li>
+            <li className="border-b-2 border-b-gray-600">
+              <a href="">Views</a>
+            </li>
+            <li className="border-b-2 border-b-gray-600">
+              <a href="">Contact</a>
+            </li>
+          </ul>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+            />
+          </svg>{' '}
+          {/* <li className="border-b-2 border-b-gray-600">Login</li> */}
         </div>
-
-        <div className=" flex flex-row  list-none relative gap-6  ">
-          <li>Home</li>
-          <button
-            className="flex items-center"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            About Us <BiChevronDown className="ml-1" />
-          </button>
-          {showDropdown && (
-            <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-sm">
-              <ul>
-                <li>Dropdown Item 1</li>
-                <li>Dropdown Item 2</li>
-                <li>Dropdown Item 3</li>
-              </ul>
-            </div>
-          )}
-          {/* <button
-            className="flex items-center"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-           Hoidays Packages <BiChevronDown className="ml-1" />
-          </button>
-          {showDropdown && (
-            <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-sm">
-              <ul>
-                <li>Dropdown Item 1</li>
-                <li>Dropdown Item 2</li>
-                <li>Dropdown Item 3</li>
-              </ul>
-            </div>
-          )}
-          <button
-            className="flex items-center"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            Our Services <BiChevronDown className="ml-1" />
-          </button>
-          {showDropdown && (
-            <div className="absolute top-full left-0 mt-1 bg-white shadow-md rounded-sm">
-              <ul>
-                <li>Dropdown Item 1</li>
-                <li>Dropdown Item 2</li>
-                <li>Dropdown Item 3</li>
-              </ul>
-            </div>
-          )} */}
-          <li>Blog</li>
-          <li>Carees</li>
-          <li>Blog</li>
-          <li>Carees</li>
-          <button className="bg-red-500 hover:bg-red-700 text-white   rounded-md  h-7">
-            Enquire Now
-          </button>
-        </div>
-      </div>
-    </div>
+      )}
+    </nav>
   );
 };
 
